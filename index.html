@@ -39,7 +39,32 @@
     </div>
     
     <script>
-        swal ( "Oops" ,  "Something went wrong!" ,  "error" )
+        function validation(){
+            const name = document.getElementById("name").value;
+            const pass =  document.getElementById("pass").value;
+            if((name !="" && pass != "")){
+                swal({
+                    title: "confirmation",
+                    text: "Are You Sure?",
+                    content: "input",
+                    buttons:{
+                        confirmButtonText: 'Yes',
+                        cancelButtonText: "No"
+                    }
+                }).then(val => {
+                    if(val){
+                        swal({
+                            title: "Thanks",
+                            text: "You typed:" + val,
+                            icon: "success"
+                        });
+                    }
+                });
+                return false;
+            }
+        }
+
+        validation()
     </script>
 </body>
 </html>
